@@ -52,10 +52,17 @@ export function LandingPage() {
             Five questions. A brief that names the member, the spouse, and the children. Then the official desk that
             actually enrolls them.
           </p>
-          <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-2">
             <Link to="/desk" className="drive inline-flex items-center justify-center px-5 text-base">
               Start
             </Link>
+            <a
+              href="/?install=1&platform=ios"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-cream px-5 text-base font-semibold text-field"
+            >
+              <Smartphone className="size-4" aria-hidden="true" />
+              Add to iPhone
+            </a>
             <Link
               to="/desk"
               search={{ sample: "navy-va" }}

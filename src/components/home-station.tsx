@@ -6,6 +6,7 @@ import { DeskShots } from "@/components/desk-shots";
 import { DesksView } from "@/components/desks-view";
 import { LearnView } from "@/components/learn-view";
 import { MapView } from "@/components/map-view";
+import { Smartphone } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Worksheet } from "@/components/worksheet";
 import {
@@ -95,7 +96,16 @@ export function HomeStation({ sampleId = "" }: { sampleId?: string }) {
             <p className="mt-1 text-sm text-cream/75">The benefits desk for the force and the family</p>
           </div>
           </div>
-          <ThemeToggle onDark />
+          <div className="flex shrink-0 items-center gap-2">
+            <a
+              href="/?install=1&platform=ios"
+              className="inline-flex min-h-11 items-center gap-1 rounded-full bg-cream px-3 text-sm font-semibold text-field"
+            >
+              <Smartphone className="size-4" aria-hidden="true" />
+              Add to iPhone
+            </a>
+            <ThemeToggle onDark />
+          </div>
         </div>
         <div className="h-px bg-brass/80" />
         <nav className="mx-auto hidden w-full max-w-3xl gap-1 px-3 py-2 md:flex" aria-label="Sections">
