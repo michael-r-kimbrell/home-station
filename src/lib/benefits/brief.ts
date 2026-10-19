@@ -160,7 +160,7 @@ export function allCards(p: Profile): Card[] {
     );
   }
 
-  if (selectedReserve(p)) {
+  if (selectedReserve(p) && !p.federalJob) {
     cards.push(
       card({
         id: "trs",
@@ -168,9 +168,7 @@ export function allCards(p: Profile): Card[] {
         title: "TRICARE Reserve Select",
         dek: "The premium plan for Selected Reserve members and their families when nobody in the qualifying seat can get a federal employee health plan.",
         who: ["sponsor", "spouse", "child"],
-        why: p.federalJob
-          ? "You are drilling, but you also marked federal employee health benefits. That usually closes this door."
-          : "Drill status does not include Prime. Reserve Select is the TRICARE plan you can buy the month you qualify.",
+        why: "Drill status does not include Prime. Reserve Select is the TRICARE plan you can buy the month you qualify.",
         cost: "A monthly premium that depends on whether you cover the member only or the member and family. It is not free, and it is usually cheaper than Retired Reserve. Look up this year's rate before you compare it with a civilian job plan.",
         steps: [
           "Confirm you are in the Selected Reserve, not the IRR, and that you are not eligible for FEHB.",
@@ -184,11 +182,11 @@ export function allCards(p: Profile): Card[] {
           { label: "TRICARE Reserve Select", href: "https://tricare.mil/Plans/HealthPlans/TRS" },
           { label: "Enroll", href: "https://tricare.mil/Plans/Enroll" },
         ],
-        warning: p.federalJob
-          ? "Eligibility for the Federal Employees Health Benefits program blocks TRICARE Reserve Select even if you decline the federal plan. Dual-status technicians hit this rule often."
-          : undefined,
       }),
     );
+  }
+
+  if (selectedReserve(p)) {
     cards.push(
       card({
         id: "lod",

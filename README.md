@@ -1,8 +1,10 @@
 # Home Station
 
-A plain-language desk for health coverage, dental, vision, life insurance, banking, and training benefits. It is for active duty, National Guard, Reserve, retirees, veterans, and the family on the record.
+The benefits that fit one household. Nothing else.
 
-This is a study guide. It does not enroll anyone. Confirm the official page before you enroll, decline coverage, or pay.
+A service member or a family member answers five questions. Home Station returns the health, dental, vision, life insurance, banking, and training options that match that status, state, and the people on the record, and it names the official desk that enrolls them.
+
+It does not enroll anyone. Answers stay in the browser. Confirm the official page before you enroll, decline coverage, or pay.
 
 ## Run it
 
@@ -11,12 +13,10 @@ npm install
 npm run dev
 ```
 
-The desk opens at http://127.0.0.1:8080.
+Open http://127.0.0.1:8080. Start with Build my brief, or try the Navy family.
 
-## What it does
+## What a household gets
 
-- A map of the six services, the components, and which person each federal benefit is for.
-- A household worksheet. Answers stay in the browser.
-- A brief that keeps the plans that fit that status, state, and family, and drops the ones that do not.
-- State tuition programs this desk has read, labeled member, spouse, or child.
-- Lessons and the official desks where enrollment actually happens.
+1. A brief that keeps the plans that fit and lists the doors that stay closed.
+2. Lessons for the rules that confuse people: DEERS, dental, SGLI, the GI Bill.
+3. Links to milConnect, TRICARE, VA.gov, and the state page. Those sites do the actual work.

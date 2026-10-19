@@ -40,7 +40,7 @@ export function MapView() {
   return (
     <section className="mx-auto w-full max-w-3xl px-4 pb-2">
       <p className="text-sm font-semibold tracking-[0.16em] text-brass uppercase">The map</p>
-      <h1 className="mt-2 font-serif text-[2.65rem] leading-[1.05] text-ink">The whole force, and only the people the rule names.</h1>
+      <h2 className="mt-2 font-serif text-4xl leading-[1.05] text-ink">The whole force, and only the people the rule names.</h2>
       <p className="mt-3 max-w-xl text-pretty text-lg">
         One household at a time. A benefit for the member is not offered to a spouse. A waiver for a child is not
         offered to the member. State tuition is state law.

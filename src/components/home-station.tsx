@@ -5,12 +5,15 @@ import { DeskShots } from "@/components/desk-shots";
 import { DesksView } from "@/components/desks-view";
 import { LearnView } from "@/components/learn-view";
 import { MapView } from "@/components/map-view";
+import { ProductStart } from "@/components/product-start";
 import { Worksheet } from "@/components/worksheet";
 import {
   type Profile,
+  HOUSEHOLDS,
   emptyProfile,
   normalize,
 } from "@/lib/benefits/model";
+import { CHECKED } from "@/lib/benefits/product";
 import { clearProfile, loadProfile, saveProfile } from "@/lib/benefits/storage";
 import { stateDesks } from "@/lib/benefits/states";
 
@@ -105,11 +108,17 @@ export function HomeStation() {
         {!ready ? <p className="px-4 py-8 text-muted">Opening the desk.</p> : null}
         {ready && tab === "worksheet" ? (
           <>
-            <MapView />
+            <ProductStart
+              onStart={() => document.getElementById("worksheet")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+              onSample={() => useSample(HOUSEHOLDS[0].profile)}
+            />
+            <div className="mt-10">
+              <MapView />
+            </div>
             <div className="mx-auto mt-8 w-full max-w-3xl px-4">
               <DeskShots />
             </div>
-            <div className="mx-auto mt-8 w-full max-w-3xl px-4">
+            <div id="worksheet" className="mx-auto mt-8 w-full max-w-3xl scroll-mt-6 px-4">
               <Worksheet draft={draft} onChange={setDraft} onSubmit={() => commit(draft)} onSample={useSample} />
             </div>
           </>
@@ -143,7 +152,7 @@ export function HomeStation() {
       </main>
 
       <footer className="mx-auto w-full max-w-3xl px-4 pt-6 pb-36 text-sm text-pretty text-muted md:pb-12">
-        Notes checked against TRICARE.mil and VA.gov in October 2026. When a dollar figure is shown, it is the one
+        Notes checked against TRICARE.mil and VA.gov in {CHECKED}. When a dollar figure is shown, it is the one
         those pages were publishing, and the link is on the card. The worksheet stays in this browser.
       </footer>
 
