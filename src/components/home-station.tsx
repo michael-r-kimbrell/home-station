@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { BookOpen, Landmark, Map, ScrollText } from "lucide-react";
 import { BriefView } from "@/components/brief-view";
 import { DeskShots } from "@/components/desk-shots";
 import { DesksView } from "@/components/desks-view";
 import { LearnView } from "@/components/learn-view";
 import { MapView } from "@/components/map-view";
-import { ProductStart } from "@/components/product-start";
 import { Worksheet } from "@/components/worksheet";
 import {
   type Profile,
@@ -26,13 +26,23 @@ const TABS: { id: Tab; label: string; icon: typeof Map }[] = [
   { id: "desks", label: "Desks", icon: Landmark },
 ];
 
-export function HomeStation() {
+export function HomeStation({ sampleId = "" }: { sampleId?: string }) {
   const [ready, setReady] = useState(false);
   const [tab, setTab] = useState<Tab>("worksheet");
   const [profile, setProfile] = useState<Profile | null>(null);
   const [draft, setDraft] = useState<Profile>(emptyProfile());
 
   useEffect(() => {
+    const sample = HOUSEHOLDS.find((item) => item.id === sampleId);
+    if (sample) {
+      const normalized = normalize(sample.profile);
+      saveProfile(normalized);
+      setProfile(normalized);
+      setDraft(normalized);
+      setTab("brief");
+      setReady(true);
+      return;
+    }
     const saved = loadProfile();
     if (saved) {
       setProfile(saved);
@@ -40,7 +50,7 @@ export function HomeStation() {
       setTab("brief");
     }
     setReady(true);
-  }, []);
+  }, [sampleId]);
 
   function commit(next: Profile) {
     const normalized = normalize(next);
@@ -77,7 +87,9 @@ export function HomeStation() {
             <span className="font-serif text-lg leading-none">HS</span>
           </div>
           <div>
-            <p className="font-serif text-[1.7rem] leading-none tracking-tight">Home Station</p>
+            <Link to="/" className="font-serif text-[1.7rem] leading-none tracking-tight">
+              Home Station
+            </Link>
             <p className="mt-1 text-sm text-paper/75">The benefits desk for the force and the family</p>
           </div>
         </div>
@@ -108,18 +120,14 @@ export function HomeStation() {
         {!ready ? <p className="px-4 py-8 text-muted">Opening the desk.</p> : null}
         {ready && tab === "worksheet" ? (
           <>
-            <ProductStart
-              onStart={() => document.getElementById("worksheet")?.scrollIntoView({ behavior: "smooth", block: "start" })}
-              onSample={() => useSample(HOUSEHOLDS[0].profile)}
-            />
+            <div id="worksheet" className="mx-auto w-full max-w-3xl scroll-mt-6 px-4">
+              <Worksheet draft={draft} onChange={setDraft} onSubmit={() => commit(draft)} onSample={useSample} />
+            </div>
             <div className="mt-10">
               <MapView />
             </div>
             <div className="mx-auto mt-8 w-full max-w-3xl px-4">
               <DeskShots />
-            </div>
-            <div id="worksheet" className="mx-auto mt-8 w-full max-w-3xl scroll-mt-6 px-4">
-              <Worksheet draft={draft} onChange={setDraft} onSubmit={() => commit(draft)} onSample={useSample} />
             </div>
           </>
         ) : null}
