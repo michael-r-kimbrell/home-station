@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Home Station">
+  <rect width="32" height="32" rx="6" fill="#1E4636"/>
+  <rect x="7" y="7.5" width="3.4" height="17" rx="0.4" fill="#F4F0E6"/>
+  <rect x="21.6" y="7.5" width="3.4" height="17" rx="0.4" fill="#F4F0E6"/>
+  <rect x="7" y="14.3" width="18" height="3.2" rx="0.3" fill="#8D6A2F"/>
+</svg>
