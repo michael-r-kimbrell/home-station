@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { lessons } from "@/lib/benefits/library";
 import { CHECKED } from "@/lib/benefits/product";
 import { loadProfile } from "@/lib/benefits/storage";
 
@@ -13,6 +15,8 @@ const COVERS: { name: string; detail: string }[] = [
   { name: "School", detail: "The GI Bill, a benefit that was transferred, and the state rule where you live." },
 ];
 
+const INTRO = lessons.find((lesson) => lesson.id === "new");
+
 export function LandingPage() {
   const [hasBrief, setHasBrief] = useState(false);
 
@@ -22,7 +26,7 @@ export function LandingPage() {
 
   return (
     <div className="min-h-screen bg-paper text-ink">
-      <header className="bg-field text-paper">
+      <header className="bg-field text-cream">
         <div className="mx-auto flex w-full max-w-3xl items-center justify-between gap-3 px-4 py-4">
           <div className="flex items-center gap-3">
             <div className="grid size-11 place-items-center rounded-2xl border border-brass/70 bg-field-deep shadow-[inset_0_1px_0_rgba(214,184,112,0.35)]">
@@ -30,9 +34,12 @@ export function LandingPage() {
             </div>
             <p className="font-serif text-2xl leading-none tracking-tight">Home Station</p>
           </div>
-          <Link to="/desk" className="text-sm font-semibold text-paper/80 underline decoration-brass underline-offset-4">
-            The desk
-          </Link>
+          <div className="flex shrink-0 items-center gap-2">
+            <Link to="/desk" className="text-sm font-semibold text-cream/80 underline decoration-brass underline-offset-4">
+              The desk
+            </Link>
+            <ThemeToggle onDark />
+          </div>
         </div>
         <div className="h-px bg-brass/80" />
         <div className="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
@@ -40,29 +47,51 @@ export function LandingPage() {
           <h1 className="mt-3 max-w-xl font-serif text-[2.75rem] leading-[1.02]">
             The benefits that fit this household. Nothing else.
           </h1>
-          <p className="mt-4 max-w-xl text-lg text-pretty text-paper/80">
+          <p className="mt-4 max-w-xl text-lg text-pretty text-cream/80">
             Five questions. A brief that names the member, the spouse, and the children. Then the official desk that
             actually enrolls them.
           </p>
           <div className="mt-6 flex flex-col gap-2 sm:flex-row">
             <Link to="/desk" className="drive inline-flex items-center justify-center px-5 text-base">
-              {hasBrief ? "Open your brief" : "Build my brief"}
+              Start
             </Link>
             <Link
               to="/desk"
               search={{ sample: "navy-va" }}
-              className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-paper/25 px-5 text-base font-semibold text-paper"
+              className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-cream/25 px-5 text-base font-semibold text-cream"
             >
               Try the Navy family
             </Link>
           </div>
-          <p className="mt-4 text-sm text-pretty text-paper/65">
+          {hasBrief ? (
+            <Link to="/desk" className="mt-3 inline-flex text-sm font-semibold text-cream underline decoration-brass underline-offset-4">
+              Open your brief
+            </Link>
+          ) : null}
+          <p className="mt-4 text-sm text-pretty text-cream/65">
             Checked {CHECKED}. Answers stay on this phone. This does not enroll you.
           </p>
         </div>
       </header>
 
       <main>
+        <section className="mx-auto w-full max-w-3xl px-4 pt-8">
+          <h2 className="font-serif text-3xl">Start with the rule that trips people</h2>
+          <p className="mt-2 max-w-xl text-pretty text-muted">
+            {INTRO?.videoTitle ?? "A short TRICARE video"}. Home Station does not host it. TRICARE does.
+          </p>
+          <div className="panel mt-4 overflow-hidden">
+            <div className="aspect-video bg-ink">
+              <iframe
+                className="h-full w-full"
+                src={`https://www.youtube-nocookie.com/embed/${INTRO?.videoId ?? "UAZnFA_VM8c"}?rel=0`}
+                title={INTRO?.videoTitle ?? "TRICARE: how to navigate as a new enrollee"}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </section>
         <section className="mx-auto w-full max-w-3xl px-4 py-8">
           <h2 className="font-serif text-3xl">Who it is for</h2>
           <ul className="mt-4 flex flex-wrap gap-2">
@@ -116,20 +145,20 @@ export function LandingPage() {
         </section>
 
         <section className="mx-auto w-full max-w-3xl px-4 pb-8">
-          <div className="overflow-hidden rounded-2xl bg-field text-paper shadow-[0_22px_40px_-28px_rgba(16,38,28,0.9)]">
+          <div className="overflow-hidden rounded-2xl bg-field text-cream shadow-[0_22px_40px_-28px_rgba(16,38,28,0.9)]">
             <div className="h-px bg-brass" />
             <div className="p-5">
               <p className="text-sm font-semibold tracking-[0.16em] text-brass uppercase">State tuition</p>
               <h2 className="mt-2 font-serif text-3xl">Your state is not the next state's.</h2>
-              <p className="mt-2 text-pretty text-paper/80">
+              <p className="mt-2 text-pretty text-cream/80">
                 A few states have a program this desk has read, and each one says who may use it. Every other state
                 starts at that state's veterans office. No row is not a no.
               </p>
               <Link
                 to="/desk"
-                className="mt-5 inline-flex min-h-12 items-center font-semibold text-paper underline decoration-brass underline-offset-4"
+                className="mt-5 inline-flex min-h-12 items-center font-semibold text-cream underline decoration-brass underline-offset-4"
               >
-                {hasBrief ? "Open your brief" : "Build my brief"}
+                {hasBrief ? "Open your brief" : "Start"}
               </Link>
             </div>
           </div>

@@ -40,7 +40,7 @@ export function DesksView({ extras }: { extras: Desk[] }) {
             onClick={() => setGroup(item)}
             className={
               group === item
-                ? "min-h-11 shrink-0 rounded-full bg-field px-3 text-sm font-semibold text-paper"
+                ? "min-h-11 shrink-0 rounded-full bg-field px-3 text-sm font-semibold text-cream"
                 : "ghost shrink-0 px-3 text-sm font-semibold text-ink"
             }
           >

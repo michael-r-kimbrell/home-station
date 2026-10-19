@@ -76,7 +76,7 @@ export function YesNo({
               onClick={() => onChange(option.on)}
               className={
                 selected
-                  ? "min-h-12 rounded-xl bg-field text-base font-semibold text-paper shadow-[inset_0_1px_0_rgba(214,184,112,0.4)]"
+                  ? "min-h-12 rounded-xl bg-field text-base font-semibold text-cream shadow-[inset_0_1px_0_rgba(214,184,112,0.4)]"
                   : "min-h-12 rounded-xl text-base font-semibold text-muted"
               }
             >

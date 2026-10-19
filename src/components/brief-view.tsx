@@ -108,12 +108,12 @@ export function BriefView({
         </button>
       </div>
 
-      <article className="mt-6 overflow-hidden rounded-2xl bg-field text-paper shadow-[0_22px_40px_-28px_rgba(16,38,28,0.9)]">
+      <article className="mt-6 overflow-hidden rounded-2xl bg-field text-cream shadow-[0_22px_40px_-28px_rgba(16,38,28,0.9)]">
         <div className="h-px bg-brass" />
         <div className="p-5">
         <p className="text-sm font-semibold tracking-[0.16em] text-brass uppercase">Region</p>
         <h3 className="mt-1 font-serif text-3xl">{region.title}</h3>
-        <p className="mt-2 text-pretty text-paper">{region.detail}</p>
+        <p className="mt-2 text-pretty text-cream">{region.detail}</p>
         <ul className="mt-3 grid gap-2">
           {region.contacts.map((contact) => (
             <li key={contact.name} className="flex flex-wrap items-baseline justify-between gap-2 border-t border-field-deep pt-2">
@@ -220,7 +220,7 @@ export function BriefView({
               onClick={() => setPerson(who)}
               className={
                 person === who
-                  ? "min-h-11 rounded-full bg-field px-3 text-sm font-semibold text-paper"
+                  ? "min-h-11 rounded-full bg-field px-3 text-sm font-semibold text-cream"
                   : "ghost px-3 text-sm font-semibold text-ink"
               }
             >
