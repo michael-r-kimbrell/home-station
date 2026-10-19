@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { Smartphone } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { lessons } from "@/lib/benefits/library";
 import { CHECKED } from "@/lib/benefits/product";
@@ -164,6 +165,24 @@ export function LandingPage() {
           </div>
         </section>
       </main>
+
+      <section className="mx-auto w-full max-w-3xl px-4 pb-4">
+        <div className="panel p-5">
+          <div className="flex items-center gap-2 text-brass">
+            <Smartphone className="size-5" aria-hidden="true" />
+            <p className="text-sm font-semibold tracking-[0.16em] uppercase">On your iPhone</p>
+          </div>
+          <h2 className="mt-2 font-serif text-3xl">Keep Home Station on the home screen.</h2>
+          <ol className="mt-3 grid gap-2 text-pretty">
+            <li>Publish the app. The chat preview is not a link Safari can save.</li>
+            <li>Open the published link in Safari.</li>
+            <li>Tap Share, then Add to Home Screen. It opens full screen, under the name Home Station.</li>
+          </ol>
+          <a href="/?install=1&platform=ios" className="drive mt-5 inline-flex items-center justify-center px-5 text-base">
+            Add to iPhone
+          </a>
+        </div>
+      </section>
 
       <footer className="mx-auto w-full max-w-3xl px-4 pt-2 pb-10 text-sm text-pretty text-muted">
         Study guide only. Not TRICARE, VA, or a bank. Rules and premiums move. Confirm the official page before you
